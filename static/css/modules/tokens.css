@@ -1,0 +1,34 @@
+/* ================================================================
+   DESIGN TOKENS — single source of truth for all values
+================================================================ */
+:root {
+  /* Palette */
+  --black:        #0d0b0c;
+  --black-2:      #131212;
+  --black-3:      #1c1a1b;
+  --white:        #ffffff;
+  --off-white:    #f7f7f7;
+  --body-text:    #303030;
+  --muted-text:   #5a5a5a;
+  --light-border: #e8e8e8;
+  --dark-border:  #231f20;
+
+  /* Accent */
+  --red:          #dc2626;
+  --red-dark:     #b91c1c;
+  --red-glow:     rgba(220, 38, 38, 0.12);
+
+  /* Typography */
+  --font: 'Inter', Arial, -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Radii */
+  --radius:    4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  /* Layout */
+  --nav-h: 72px;
+
+  /* Motion */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}

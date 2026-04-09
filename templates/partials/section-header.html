@@ -1,0 +1,5 @@
+{{define "section-header"}}
+<p class="label{{if eq .Theme "light"}} label--light{{end}}{{if eq .Align "center"}} text-center{{end}}">{{.Label}}</p>
+<h2 class="section-title section-title--{{.Theme}}{{if eq .Align "center"}} text-center{{end}}">{{.Title}}</h2>
+{{if .Sub}}<p class="section-sub{{if eq .Theme "light"}} section-sub--light{{end}}{{if eq .Align "center"}} text-center{{end}}">{{.Sub}}</p>{{end}}
+{{end}}

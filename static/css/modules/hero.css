@@ -1,0 +1,131 @@
+/* ================================================================
+   HEROES — homepage full-bleed + inner-page variants
+================================================================ */
+
+/* ─── Homepage hero ──────────────────────────────────────────── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: calc(var(--nav-h) + 60px) 0 80px;
+  overflow: hidden;
+  background-image:
+    linear-gradient(to right, rgba(13,11,12,0.88) 40%, rgba(13,11,12,0.45) 100%),
+    url('/static/images/heroimg.jpg');
+  background-size: cover;
+  background-position: center 30%;
+  background-repeat: no-repeat;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+}
+
+.hero__location {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 20px;
+}
+
+.hero__title {
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 900;
+  line-height: 1.0;
+  letter-spacing: -0.04em;
+  color: var(--white);
+  margin-bottom: 24px;
+}
+
+.hero__sub {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.75;
+  max-width: 500px;
+  margin-bottom: 40px;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.hero__scroll {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.2);
+  animation: float 2.5s ease-in-out infinite;
+}
+
+.hero__scroll-line {
+  width: 1px;
+  height: 36px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.2), transparent);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%       { transform: translateX(-50%) translateY(6px); }
+}
+
+/* ─── Inner-page hero (timetable, memberships) ───────────────── */
+.tt-hero {
+  background-image:
+    linear-gradient(to right, rgba(13,11,12,0.90) 40%, rgba(13,11,12,0.55) 100%),
+    url('/static/images/markcompeting.jpeg');
+  background-size: cover;
+  background-position: center 30%;
+  padding: calc(var(--nav-h) + 64px) 0 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Memberships page overrides only the image */
+.tt-hero--memberships {
+  background-image:
+    linear-gradient(to right, rgba(13,11,12,0.90) 40%, rgba(13,11,12,0.55) 100%),
+    url('/static/images/academy.jpeg');
+  background-position: center 35%;
+}
+
+.tt-hero__content {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+}
+
+.tt-hero__title {
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  color: var(--white);
+  margin-bottom: 16px;
+}
+
+.tt-hero__sub {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.75;
+  max-width: 500px;
+  margin-bottom: 32px;
+}

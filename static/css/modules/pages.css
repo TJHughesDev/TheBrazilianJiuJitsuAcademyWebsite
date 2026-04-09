@@ -1,0 +1,187 @@
+/* ================================================================
+   PAGES — styles unique to specific page templates
+================================================================ */
+
+/* ════════════════════════════════════════════════════════════════
+   TIMETABLE PAGE
+════════════════════════════════════════════════════════════════ */
+.tt-section { background: var(--white); }
+
+/* Legend */
+.tt-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  margin-bottom: 40px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--light-border);
+}
+
+.tt-legend__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted-text);
+}
+
+.tt-dot {
+  width: 12px; height: 12px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+.tt-dot--adults-gi   { background: #dc2626; }
+.tt-dot--adults-nogi { background: #7c3aed; }
+.tt-dot--kids        { background: #2563eb; }
+.tt-dot--beginners   { background: #16a34a; }
+.tt-dot--competition { background: #0d0b0c; }
+.tt-dot--open-mat    { background: #9ca3af; }
+
+/* Day grid */
+.tt-grid {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--light-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.tt-day {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  border-bottom: 1px solid var(--light-border);
+}
+.tt-day:last-child { border-bottom: none; }
+.tt-day--rest      { background: var(--off-white); }
+
+.tt-day__header {
+  padding: 24px 20px;
+  border-right: 1px solid var(--light-border);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+}
+
+.tt-day__name {
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--black);
+}
+
+.tt-day__rest-label {
+  font-size: 0.72rem;
+  color: var(--muted-text);
+  font-weight: 500;
+}
+
+.tt-day__sessions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 18px 20px;
+  align-items: center;
+}
+
+.tt-session {
+  border-radius: var(--radius);
+  padding: 10px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 170px;
+}
+.tt-session--adults-gi   { background: #fee2e2; border-left: 3px solid #dc2626; }
+.tt-session--adults-nogi { background: #ede9fe; border-left: 3px solid #7c3aed; }
+.tt-session--kids        { background: #dbeafe; border-left: 3px solid #2563eb; }
+.tt-session--beginners   { background: #dcfce7; border-left: 3px solid #16a34a; }
+.tt-session--competition { background: #f3f4f6; border-left: 3px solid #0d0b0c; }
+.tt-session--open-mat    { background: #f9fafb; border-left: 3px solid #9ca3af; }
+
+.tt-session__time {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--muted-text);
+}
+.tt-session__name {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--black);
+}
+
+/* Notes block */
+.tt-notes {
+  margin-top: 32px;
+  padding: 24px 28px;
+  background: var(--off-white);
+  border: 1px solid var(--light-border);
+  border-radius: var(--radius-md);
+}
+.tt-notes p {
+  font-size: 0.875rem;
+  color: var(--muted-text);
+  line-height: 1.7;
+  margin-bottom: 6px;
+}
+.tt-notes p:last-of-type { margin-bottom: 0; }
+.tt-notes strong { color: var(--black); }
+
+/* ════════════════════════════════════════════════════════════════
+   MEMBERSHIPS PAGE
+════════════════════════════════════════════════════════════════ */
+.membership-section { background: var(--off-white); }
+
+.membership-notice {
+  background: var(--black);
+  border-left: 4px solid var(--red);
+  border-radius: var(--radius-md);
+  padding: 20px 24px;
+  margin-bottom: 64px;
+}
+.membership-notice p {
+  color: rgba(255,255,255,0.65);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+.membership-notice strong { color: var(--white); }
+
+/* Group dividers */
+.membership-group { margin-bottom: 56px; }
+.membership-group:last-child { margin-bottom: 0; }
+
+.membership-group__header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.membership-group__title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted-text);
+  white-space: nowrap;
+}
+
+.membership-group__rule {
+  flex: 1;
+  height: 1px;
+  background: var(--light-border);
+}
+
+/* Grid variants */
+.membership-grid--3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.membership-grid--2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}

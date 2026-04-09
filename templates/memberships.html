@@ -16,6 +16,8 @@
 <section class="section membership-section" id="memberships">
   <div class="container">
 
+    {{template "section-header" (dict "Label" "Transparent Pricing" "Title" "Choose Your Membership" "Sub" "All memberships are set up in person at the academy. Come in for a free taster session first — we'll find the right fit for you." "Theme" "dark" "Align" "center")}}
+
     <div class="membership-notice">
       <p><strong>Please note:</strong> Memberships are not purchased online. After your free taster session, our team will set everything up at the academy on your first visit.</p>
     </div>
@@ -167,14 +169,6 @@
 
 {{template "testimonials" .}}
 
-<!-- CTA STRIP -->
-<section class="section" style="background: var(--black); text-align: center;">
-  <div class="container">
-    <p class="label label--light text-center">Take the First Step</p>
-    <h2 class="section-title section-title--light text-center" style="margin-bottom: 12px;">Not Sure Where to Start?</h2>
-    <p style="color: rgba(255,255,255,0.5); max-width: 520px; margin: 0 auto 32px; line-height: 1.75;">Come in for a completely free taster session. No experience needed, no pressure — just turn up and try it.</p>
-    <a href="/#taster" class="btn btn--red btn--lg">Book Your Free Taster</a>
-  </div>
-</section>
+{{template "cta-strip" (dict "Label" "Take the First Step" "Title" "Not Sure Where to Start?" "Body" "Come in for a completely free taster session. No experience needed, no pressure — just turn up and try it." "BtnText" "Book Your Free Taster" "BtnHref" "/#taster" "BgImage" "/static/images/66462639859f07541beea20f_image00050-p-1080.jpeg")}}
 
 {{end}}

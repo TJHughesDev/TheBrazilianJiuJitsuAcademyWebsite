@@ -65,15 +65,34 @@ type PageData struct {
 	Timetable   []TimetableDay
 }
 
+// ─── Template helpers ──────────────────────────────────────────
+
+var funcMap = template.FuncMap{
+	"dict": func(values ...interface{}) (map[string]interface{}, error) {
+		if len(values)%2 != 0 {
+			return nil, fmt.Errorf("dict: odd number of arguments")
+		}
+		m := make(map[string]interface{}, len(values)/2)
+		for i := 0; i < len(values); i += 2 {
+			key, ok := values[i].(string)
+			if !ok {
+				return nil, fmt.Errorf("dict: keys must be strings")
+			}
+			m[key] = values[i+1]
+		}
+		return m, nil
+	},
+}
+
 // ─── State ─────────────────────────────────────────────────────
 
 var (
-	instructors      []Instructor
-	schedule         []ClassSession
-	timetable        []TimetableDay
-	indexTmpl        *template.Template
-	timetableTmpl    *template.Template
-	membershipsTmpl  *template.Template
+	instructors     []Instructor
+	schedule        []ClassSession
+	timetable       []TimetableDay
+	indexTmpl       *template.Template
+	timetableTmpl   *template.Template
+	membershipsTmpl *template.Template
 )
 
 // ─── Bootstrap ─────────────────────────────────────────────────
@@ -135,32 +154,33 @@ func loadData() error {
 	return nil
 }
 
+// partials are the shared template files included in every page parse.
+var partials = []string{
+	"templates/layout.html",
+	"templates/partials/section-header.html",
+	"templates/partials/cta-strip.html",
+	"templates/partials/testimonials.html",
+}
+
+func parseTemplate(pages ...string) (*template.Template, error) {
+	files := append(partials, pages...)
+	return template.New("base").Funcs(funcMap).ParseFiles(files...)
+}
+
 func loadTemplates() error {
 	var err error
 
-	indexTmpl, err = template.ParseFiles(
-		"templates/layout.html",
-		"templates/partials/testimonials.html",
-		"templates/index.html",
-	)
+	indexTmpl, err = parseTemplate("templates/index.html")
 	if err != nil {
 		return fmt.Errorf("parsing index templates: %w", err)
 	}
 
-	timetableTmpl, err = template.ParseFiles(
-		"templates/layout.html",
-		"templates/partials/testimonials.html",
-		"templates/timetable.html",
-	)
+	timetableTmpl, err = parseTemplate("templates/timetable.html")
 	if err != nil {
 		return fmt.Errorf("parsing timetable templates: %w", err)
 	}
 
-	membershipsTmpl, err = template.ParseFiles(
-		"templates/layout.html",
-		"templates/partials/testimonials.html",
-		"templates/memberships.html",
-	)
+	membershipsTmpl, err = parseTemplate("templates/memberships.html")
 	if err != nil {
 		return fmt.Errorf("parsing memberships templates: %w", err)
 	}

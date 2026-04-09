@@ -1,0 +1,335 @@
+/* ================================================================
+   SECTIONS — page section layouts and wrappers
+================================================================ */
+
+/* ─── About ──────────────────────────────────────────────────── */
+.about { background: var(--white); }
+
+.about__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.about__content .section-title { margin-bottom: 20px; }
+
+.about__text {
+  font-size: 1rem;
+  color: var(--muted-text);
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+.about__text:last-of-type { margin-bottom: 32px; }
+
+.about__features { display: flex; flex-direction: column; gap: 2px; }
+
+/* ─── Classes ────────────────────────────────────────────────── */
+.classes { background: var(--off-white); }
+
+.classes__group { margin-bottom: 64px; }
+.classes__group:last-child { margin-bottom: 0; }
+
+.classes__group-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  margin-bottom: 28px;
+}
+
+.classes__group-title {
+  font-size: 1.55rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--black);
+  margin-bottom: 6px;
+}
+
+.classes__group-sub {
+  font-size: 0.95rem;
+  color: var(--muted-text);
+  max-width: 600px;
+  line-height: 1.65;
+}
+
+.class-grid              { display: grid; gap: 16px; }
+.class-grid--three       { grid-template-columns: repeat(3, 1fr); }
+.class-grid--two         { grid-template-columns: repeat(2, 1fr); }
+
+/* ─── Offer (4-week course) ──────────────────────────────────── */
+.offer { background: var(--black); }
+
+.offer__inner {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 80px;
+  align-items: center;
+}
+
+.offer__gi-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(220,38,38,0.12);
+  border: 1px solid rgba(220,38,38,0.35);
+  color: #fca5a5;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 7px 14px;
+  border-radius: var(--radius);
+  margin: 16px 0 20px;
+}
+
+.offer__text {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.75;
+  margin-bottom: 24px;
+}
+
+.offer__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 32px;
+}
+.offer__list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.8);
+}
+.offer__list li svg { color: var(--red); flex-shrink: 0; }
+
+.offer__stats { display: flex; flex-direction: column; gap: 12px; }
+
+.offer__stat {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  text-align: center;
+}
+.offer__stat--red {
+  background: rgba(220,38,38,0.1);
+  border-color: rgba(220,38,38,0.3);
+}
+.offer__stat-num {
+  font-size: 2.5rem;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.offer__stat--red .offer__stat-num { color: var(--red); }
+.offer__stat-lbl {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+}
+
+/* ─── Schedule preview ───────────────────────────────────────── */
+.schedule { background: var(--white); }
+
+.schedule__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
+}
+
+.schedule__cta { margin-top: 36px; text-align: center; }
+
+/* ─── Instructors ────────────────────────────────────────────── */
+.instructors { background: var(--off-white); }
+
+.instructors__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* ─── Testimonials (section wrapper) ─────────────────────────── */
+.testimonials {
+  background: var(--black);
+  overflow: hidden;
+  padding-bottom: 7rem;
+}
+
+/* ─── FAQ ────────────────────────────────────────────────────── */
+.faq { background: var(--off-white); }
+
+.faq__container {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.faq__list { display: flex; flex-direction: column; }
+
+.faq__item            { border-bottom: 1px solid var(--light-border); }
+.faq__item:first-child { border-top:   1px solid var(--light-border); }
+
+.faq__q {
+  width: 100%;
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--black);
+  text-align: left;
+  transition: color 0.15s;
+}
+.faq__q:hover { color: var(--red); }
+
+.faq__chevron {
+  flex-shrink: 0;
+  color: var(--muted-text);
+  transition: transform 0.25s var(--ease), color 0.15s;
+}
+.faq__q[aria-expanded="true"] .faq__chevron {
+  transform: rotate(180deg);
+  color: var(--red);
+}
+
+.faq__a {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.35s var(--ease);
+}
+.faq__a.open { max-height: 400px; }
+
+.faq__a p {
+  padding-bottom: 20px;
+  font-size: 0.9rem;
+  color: var(--muted-text);
+  line-height: 1.8;
+}
+
+/* ─── Taster form section ────────────────────────────────────── */
+.taster { background: var(--black-2); }
+
+.taster__card {
+  display: grid;
+  grid-template-columns: 1fr 440px;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: rgba(255,255,255,0.02);
+}
+
+.taster__info {
+  padding: 56px;
+  border-right: 1px solid rgba(255,255,255,0.07);
+}
+
+.taster__title {
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  color: var(--white);
+  margin-bottom: 16px;
+}
+
+.taster__text {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.75;
+  margin-bottom: 28px;
+}
+
+.taster__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+.taster__list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.75);
+}
+
+.taster__also {
+  background: rgba(220,38,38,0.07);
+  border: 1px solid rgba(220,38,38,0.2);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.65;
+}
+.taster__also strong { color: rgba(255,255,255,0.8); }
+.taster__also .text-red { color: var(--red); }
+
+.taster__form-wrap {
+  background: rgba(255,255,255,0.03);
+  border-left: 1px solid rgba(255,255,255,0.05);
+  padding: 48px 40px;
+}
+
+.taster__form-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--white);
+  margin-bottom: 28px;
+}
+
+/* ─── Welcome intro ──────────────────────────────────────────── */
+.welcome { background: var(--off-white); }
+
+.welcome__inner {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.welcome__text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--muted-text);
+  margin-bottom: 2rem;
+}
+
+.welcome__ctas {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ─── CTA strip ──────────────────────────────────────────────── */
+.cta-strip {
+  background: var(--black);
+  text-align: center;
+}
+
+.cta-strip--image {
+  background-size: cover;
+  background-position: center;
+}
+
+.cta-strip__body {
+  color: rgba(255,255,255,0.5);
+  max-width: 520px;
+  margin: 0 auto 32px;
+  line-height: 1.75;
+  font-size: 1rem;
+}
