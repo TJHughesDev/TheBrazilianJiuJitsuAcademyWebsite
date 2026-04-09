@@ -1,0 +1,126 @@
+{{define "layout"}}<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{{.Description}}">
+  <meta property="og:title" content="{{.Title}}">
+  <meta property="og:description" content="{{.Description}}">
+  <meta property="og:type" content="website">
+  <title>{{.Title}}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body class="page--{{.Page}}">
+
+<!-- ═══ NAV ═══════════════════════════════════════════════════ -->
+<nav class="nav" id="nav">
+  <div class="container">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">
+        <img src="/static/images/logo.svg" alt="The Brazilian Jiu Jitsu Academy" class="nav__logo-img">
+      </a>
+      <ul class="nav__links">
+        <li><a href="/#about">About</a></li>
+        <li><a href="/#classes">Classes</a></li>
+        <li><a href="/timetable">Timetable</a></li>
+        <li><a href="/memberships">Memberships</a></li>
+        <li><a href="/#instructors">Instructors</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+      <a href="/#taster" class="btn btn--red nav__cta">Free Taster</a>
+      <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <button class="mobile-menu__close" id="menuClose" aria-label="Close menu">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <ul>
+    <li><a href="/#about" class="mobile-link">About</a></li>
+    <li><a href="/#classes" class="mobile-link">Classes</a></li>
+    <li><a href="/timetable" class="mobile-link">Timetable</a></li>
+    <li><a href="/memberships" class="mobile-link">Memberships</a></li>
+    <li><a href="/#instructors" class="mobile-link">Instructors</a></li>
+    <li><a href="/#contact" class="mobile-link">Contact</a></li>
+  </ul>
+  <a href="/#taster" class="btn btn--red mobile-link" style="margin-top:2rem;display:inline-block;">Book Free Taster</a>
+</div>
+<div class="mobile-overlay" id="mobileOverlay"></div>
+
+<!-- ═══ PAGE CONTENT ═══════════════════════════════════════════ -->
+{{template "content" .}}
+
+<!-- ═══ FOOTER ═════════════════════════════════════════════════ -->
+<footer class="footer" id="contact">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a href="/" class="footer__logo-link">
+          <img src="/static/images/logo.svg" alt="The Brazilian Jiu Jitsu Academy" class="footer__logo-img">
+        </a>
+        <p class="footer__tagline">Market Drayton, Shropshire</p>
+        <div class="footer__social">
+          <a href="https://www.facebook.com/thebjjacademy" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/thebjjacademy_est2022" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer__col">
+        <h4 class="footer__heading">Navigate</h4>
+        <ul class="footer__links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/#about">About</a></li>
+          <li><a href="/#classes">Classes</a></li>
+          <li><a href="/timetable">Timetable</a></li>
+          <li><a href="/memberships">Memberships</a></li>
+          <li><a href="/#instructors">Instructors</a></li>
+          <li><a href="/#taster">Free Taster</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4 class="footer__heading">Classes</h4>
+        <ul class="footer__links">
+          <li><a href="/#classes">Adult Gi BJJ</a></li>
+          <li><a href="/#classes">Adult No-Gi BJJ</a></li>
+          <li><a href="/#classes">Beginners Classes</a></li>
+          <li><a href="/#classes">Kids (Ages 6–9)</a></li>
+          <li><a href="/#classes">Kids (Ages 10–14)</a></li>
+          <li><a href="/#beginners-course">4 Week Beginners Course</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4 class="footer__heading">Contact Us</h4>
+        <address class="footer__address">
+          <p>Unit 43, Tern Valley Business Park</p>
+          <p>Market Drayton, TF9 3AG</p>
+        </address>
+        <a href="mailto:info@thebrazilianjiujitsuacademy.com" class="footer__email">info@thebrazilianjiujitsuacademy.com</a>
+        <a href="/#taster" class="btn btn--red" style="margin-top:1.5rem;display:inline-block;">Book Free Taster</a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>&copy; 2024 The Brazilian Jiu Jitsu Academy. All rights reserved.</p>
+      <div class="footer__bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">REORG Charity</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/static/js/main.js"></script>
+</body>
+</html>
+{{end}}

@@ -1,0 +1,12 @@
+[
+  {"day": "Monday",    "time": "17:30–18:15", "class": "Kids 10-14 Gi",           "type": "Kids",   "gi": true},
+  {"day": "Monday",    "time": "18:15–19:00", "class": "White Belt Beginners Gi", "type": "Adults", "gi": true},
+  {"day": "Monday",    "time": "19:00–20:00", "class": "Adult Gi",                "type": "Adults", "gi": true},
+  {"day": "Tuesday",   "time": "18:00–19:30", "class": "Adult No-Gi",             "type": "Adults", "gi": false},
+  {"day": "Wednesday", "time": "17:30–18:00", "class": "Kids 6-9 Gi",             "type": "Kids",   "gi": true},
+  {"day": "Wednesday", "time": "18:00–19:00", "class": "Adult Gi",                "type": "Adults", "gi": true},
+  {"day": "Wednesday", "time": "19:00–20:00", "class": "Adult Gi Competition",    "type": "Adults", "gi": true},
+  {"day": "Thursday",  "time": "18:15–19:45", "class": "Adult Gi",                "type": "Adults", "gi": true},
+  {"day": "Friday",    "time": "18:00–19:30", "class": "Adult No-Gi",             "type": "Adults", "gi": false},
+  {"day": "Sunday",    "time": "09:00–10:30", "class": "Adult Gi",                "type": "Adults", "gi": true}
+]

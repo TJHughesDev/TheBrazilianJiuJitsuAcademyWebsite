@@ -1,0 +1,51 @@
+[
+  {
+    "day": "Monday",
+    "sessions": [
+      {"time": "06:00–07:00", "name": "Adult Open Mat",          "type": "open-mat"},
+      {"time": "17:30–18:15", "name": "Kids 10-14 Gi",           "type": "kids"},
+      {"time": "18:15–19:00", "name": "White Belt Beginners Gi", "type": "beginners"},
+      {"time": "19:00–20:00", "name": "Adult Gi",                "type": "adults-gi"}
+    ]
+  },
+  {
+    "day": "Tuesday",
+    "sessions": [
+      {"time": "06:00–07:00", "name": "Adult Open Mat", "type": "open-mat"},
+      {"time": "18:00–19:30", "name": "Adult No-Gi",    "type": "adults-nogi"}
+    ]
+  },
+  {
+    "day": "Wednesday",
+    "sessions": [
+      {"time": "06:00–07:00", "name": "Adult Open Mat",        "type": "open-mat"},
+      {"time": "17:30–18:00", "name": "Kids 6-9 Gi",           "type": "kids"},
+      {"time": "18:00–19:00", "name": "Adult Gi",              "type": "adults-gi"},
+      {"time": "19:00–20:00", "name": "Adult Gi Competition",  "type": "competition"}
+    ]
+  },
+  {
+    "day": "Thursday",
+    "sessions": [
+      {"time": "06:00–07:00", "name": "Adult Open Mat", "type": "open-mat"},
+      {"time": "18:15–19:45", "name": "Adult Gi",       "type": "adults-gi"}
+    ]
+  },
+  {
+    "day": "Friday",
+    "sessions": [
+      {"time": "06:00–07:00", "name": "Adult Open Mat", "type": "open-mat"},
+      {"time": "18:00–19:30", "name": "Adult No-Gi",    "type": "adults-nogi"}
+    ]
+  },
+  {
+    "day": "Saturday",
+    "sessions": []
+  },
+  {
+    "day": "Sunday",
+    "sessions": [
+      {"time": "09:00–10:30", "name": "Adult Gi", "type": "adults-gi"}
+    ]
+  }
+]

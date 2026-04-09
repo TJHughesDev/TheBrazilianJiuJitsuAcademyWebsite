@@ -1,0 +1,26 @@
+[
+  {
+    "id": "mark-badham",
+    "name": "Mark Badham",
+    "title": "Head Coach & Founder",
+    "belt": "Black Belt",
+    "bio": "Mark is the founder of The Brazilian Jiu Jitsu Academy and co-founder of the British Army Brazilian Jiu Jitsu team. Training since 2011, Mark has competed in prestigious international competitions and brings a wealth of technical knowledge and competitive experience to every class.",
+    "lineage": "Mitsuyo Maeda → Carlos Gracie → Helio Gracie → Carlos Gracie Jr → Roger Gracie → Andy Roberts → Mark Badham"
+  },
+  {
+    "id": "chris-rowland",
+    "name": "James Thornton",
+    "title": "Gi Coach",
+    "belt": "Blue Belt",
+    "bio": "James has been training BJJ and submission grappling for over eight years, with a particular focus on No-Gi competition. A former amateur MMA competitor, James brings a dynamic, athletic approach to his classes and specialises in wrestling and leg lock systems.",
+    "lineage": ""
+  },
+  {
+    "id": "tyler-hughes",
+    "name": "Tyler Hughes",
+    "title": "Head No-Gi Coach",
+    "belt": "Purple Belt",
+    "bio": "Sophie leads our junior programme and has a natural ability to connect with young students. With five years of training and a background in youth coaching, Sophie creates a positive, energetic environment where children thrive — developing not just BJJ skills but confidence and character.",
+    "lineage": ""
+  }
+]
