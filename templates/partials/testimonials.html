@@ -5,54 +5,22 @@
   </div>
   <div class="carousel">
     <div class="carousel__track" id="carouselTrack">
+      {{range .Testimonials}}
       <div class="testimonial">
-        <div class="testimonial__stars">★★★★★</div>
-        <p class="testimonial__quote">"Started here at 49 years old. The support and mental health benefits are life-changing, making this far more than a martial arts club."</p>
+        <div class="testimonial__stars">{{stars .Rating}}</div>
+        <p class="testimonial__quote">"{{.Quote}}"</p>
         <div class="testimonial__author">
-          <div class="testimonial__avatar"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 12c2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5 2.239 5 5 5zm0 2c-3.337 0-10 1.676-10 5v2h20v-2c0-3.324-6.663-5-10-5z"/></svg></div>
-          <span>Martin Andrews</span>
+          <div class="testimonial__avatar">
+            {{if .Image}}
+            <img src="{{.Image}}" alt="{{.Name}}" loading="lazy">
+            {{else}}
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 12c2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5 2.239 5 5 5zm0 2c-3.337 0-10 1.676-10 5v2h20v-2c0-3.324-6.663-5-10-5z"/></svg>
+            {{end}}
+          </div>
+          <span>{{.Name}}</span>
         </div>
       </div>
-      <div class="testimonial">
-        <div class="testimonial__stars">★★★★★</div>
-        <p class="testimonial__quote">"Made to feel extremely welcome. Amazing and friendly atmosphere, perfect place to start or restart your BJJ journey."</p>
-        <div class="testimonial__author">
-          <div class="testimonial__avatar"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 12c2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5 2.239 5 5 5zm0 2c-3.337 0-10 1.676-10 5v2h20v-2c0-3.324-6.663-5-10-5z"/></svg></div>
-          <span>Jez Smart</span>
-        </div>
-      </div>
-      <div class="testimonial">
-        <div class="testimonial__stars">★★★★★</div>
-        <p class="testimonial__quote">"After a long hiatus from Jiu Jitsu, the facility is fantastic with clear instruction. Once you start you won't stop."</p>
-        <div class="testimonial__author">
-          <div class="testimonial__avatar"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 12c2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5 2.239 5 5 5zm0 2c-3.337 0-10 1.676-10 5v2h20v-2c0-3.324-6.663-5-10-5z"/></svg></div>
-          <span>Andrew Selby</span>
-        </div>
-      </div>
-      <div class="testimonial">
-        <div class="testimonial__stars">★★★★★</div>
-        <p class="testimonial__quote">"No hesitation signing up as a member. Relaxed and fun atmosphere, fantastic facilities."</p>
-        <div class="testimonial__author">
-          <div class="testimonial__avatar"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 12c2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5 2.239 5 5 5zm0 2c-3.337 0-10 1.676-10 5v2h20v-2c0-3.324-6.663-5-10-5z"/></svg></div>
-          <span>Jamie Moore</span>
-        </div>
-      </div>
-      <div class="testimonial">
-        <div class="testimonial__stars">★★★★★</div>
-        <p class="testimonial__quote">"Outstanding academy. State of the art equipment with a relaxed atmosphere and great people."</p>
-        <div class="testimonial__author">
-          <div class="testimonial__avatar"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 12c2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5 2.239 5 5 5zm0 2c-3.337 0-10 1.676-10 5v2h20v-2c0-3.324-6.663-5-10-5z"/></svg></div>
-          <span>Sam Benson</span>
-        </div>
-      </div>
-      <div class="testimonial">
-        <div class="testimonial__stars">★★★★★</div>
-        <p class="testimonial__quote">"Amazing place with a nice relaxed atmosphere. Instructor Mark is one of the best and a real down to earth guy."</p>
-        <div class="testimonial__author">
-          <div class="testimonial__avatar"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 12c2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5 2.239 5 5 5zm0 2c-3.337 0-10 1.676-10 5v2h20v-2c0-3.324-6.663-5-10-5z"/></svg></div>
-          <span>Aaron Allen</span>
-        </div>
-      </div>
+      {{end}}
     </div>
   </div>
 </section>

@@ -133,7 +133,6 @@
       return (
         '<div class="schedule-card">' +
           '<div class="schedule-card__day">' +
-            '<span class="schedule-card__day-name">' + escHtml(s.day) + '</span>' +
             '<span class="schedule-card__day-abbr">' + (DAY_ABBR[s.day] || s.day.slice(0, 3).toUpperCase()) + '</span>' +
           '</div>' +
           '<div class="schedule-card__info">' +
@@ -184,7 +183,11 @@
 
       return (
         '<div class="instructor-card">' +
-          '<div class="instructor-card__avatar">' + initials(i.name) + '</div>' +
+          '<div class="instructor-card__avatar">' +
+            (i.image
+              ? '<img src="' + escHtml(i.image) + '" alt="' + escHtml(i.name) + '" loading="lazy">'
+              : initials(i.name)) +
+          '</div>' +
           '<span class="instructor-card__belt ' + beltClass + '">' + escHtml(i.belt) + '</span>' +
           '<div class="instructor-card__name">' + escHtml(i.name) + '</div>' +
           '<div class="instructor-card__title">' + escHtml(i.title) + '</div>' +
@@ -227,7 +230,7 @@
     formSuccess.classList.add('hidden');
   }
 
-  function validateForm(data) {
+  function validateForm() {
     var ok = true;
 
     ['name', 'email'].forEach(function (field) {
@@ -261,7 +264,7 @@
       message:  (form.elements['message']  ? form.elements['message'].value.trim()  : '')
     };
 
-    if (!validateForm(data)) return;
+    if (!validateForm()) return;
 
     setLoading(true);
     formSuccess.classList.add('hidden');

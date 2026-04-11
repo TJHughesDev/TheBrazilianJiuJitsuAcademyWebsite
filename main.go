@@ -21,6 +21,7 @@ type Instructor struct {
 	Title   string `json:"title"`
 	Belt    string `json:"belt"`
 	Bio     string `json:"bio"`
+	Image   string `json:"image,omitempty"`
 	Lineage string `json:"lineage,omitempty"`
 }
 
@@ -43,6 +44,13 @@ type TimetableDay struct {
 	Sessions []TimetableSession `json:"sessions"`
 }
 
+type Testimonial struct {
+	Name   string `json:"name"`
+	Quote  string `json:"quote"`
+	Rating int    `json:"rating"`
+	Image  string `json:"image,omitempty"`
+}
+
 type TasterRequest struct {
 	Name     string `json:"name"`
 	Email    string `json:"email"`
@@ -59,15 +67,19 @@ type APIResponse struct {
 
 // PageData is passed to every template execution.
 type PageData struct {
-	Title       string
-	Description string
-	Page        string // "home" | "timetable" | "memberships"
-	Timetable   []TimetableDay
+	Title        string
+	Description  string
+	Page         string // "home" | "timetable" | "memberships"
+	Timetable    []TimetableDay
+	Testimonials []Testimonial
 }
 
 // ─── Template helpers ──────────────────────────────────────────
 
 var funcMap = template.FuncMap{
+	"stars": func(n int) string {
+		return strings.Repeat("★", n)
+	},
 	"dict": func(values ...interface{}) (map[string]interface{}, error) {
 		if len(values)%2 != 0 {
 			return nil, fmt.Errorf("dict: odd number of arguments")
@@ -90,6 +102,7 @@ var (
 	instructors     []Instructor
 	schedule        []ClassSession
 	timetable       []TimetableDay
+	testimonials    []Testimonial
 	indexTmpl       *template.Template
 	timetableTmpl   *template.Template
 	membershipsTmpl *template.Template
@@ -149,8 +162,16 @@ func loadData() error {
 		return fmt.Errorf("parsing timetable.json: %w", err)
 	}
 
-	log.Printf("loaded %d instructors, %d schedule slots, %d timetable days",
-		len(instructors), len(schedule), len(timetable))
+	raw, err = os.ReadFile("data/testimonials.json")
+	if err != nil {
+		return fmt.Errorf("reading testimonials.json: %w", err)
+	}
+	if err := json.Unmarshal(raw, &testimonials); err != nil {
+		return fmt.Errorf("parsing testimonials.json: %w", err)
+	}
+
+	log.Printf("loaded %d instructors, %d schedule slots, %d timetable days, %d testimonials",
+		len(instructors), len(schedule), len(timetable), len(testimonials))
 	return nil
 }
 
@@ -204,26 +225,29 @@ func handleIndex(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	renderHTML(w, indexTmpl, PageData{
-		Title:       "The Brazilian Jiu Jitsu Academy | Market Drayton, Shropshire",
-		Description: "Professional Brazilian Jiu Jitsu training in Market Drayton, Shropshire. Classes for adults and children from age 6. Book your free taster session today.",
-		Page:        "home",
+		Title:        "The Brazilian Jiu Jitsu Academy | Market Drayton, Shropshire",
+		Description:  "Professional Brazilian Jiu Jitsu training in Market Drayton, Shropshire. Classes for adults and children from age 6. Book your free taster session today.",
+		Page:         "home",
+		Testimonials: testimonials,
 	})
 }
 
 func handleTimetable(w http.ResponseWriter, r *http.Request) {
 	renderHTML(w, timetableTmpl, PageData{
-		Title:       "Class Timetable | The Brazilian Jiu Jitsu Academy",
-		Description: "Full weekly class timetable for The Brazilian Jiu Jitsu Academy, Market Drayton. Adult gi, no-gi, kids classes and open mat sessions.",
-		Page:        "timetable",
-		Timetable:   timetable,
+		Title:        "Class Timetable | The Brazilian Jiu Jitsu Academy",
+		Description:  "Full weekly class timetable for The Brazilian Jiu Jitsu Academy, Market Drayton. Adult gi, no-gi, kids classes and open mat sessions.",
+		Page:         "timetable",
+		Timetable:    timetable,
+		Testimonials: testimonials,
 	})
 }
 
 func handleMemberships(w http.ResponseWriter, r *http.Request) {
 	renderHTML(w, membershipsTmpl, PageData{
-		Title:       "Memberships | The Brazilian Jiu Jitsu Academy",
-		Description: "Flexible BJJ membership options for adults and children at The Brazilian Jiu Jitsu Academy, Market Drayton. Armed forces discounts available.",
-		Page:        "memberships",
+		Title:        "Memberships | The Brazilian Jiu Jitsu Academy",
+		Description:  "Flexible BJJ membership options for adults and children at The Brazilian Jiu Jitsu Academy, Market Drayton. Armed forces discounts available.",
+		Page:         "memberships",
+		Testimonials: testimonials,
 	})
 }
 

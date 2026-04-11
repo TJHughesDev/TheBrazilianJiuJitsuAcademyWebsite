@@ -5,22 +5,25 @@
     "title": "Head Coach & Founder",
     "belt": "Black Belt",
     "bio": "Mark is the founder of The Brazilian Jiu Jitsu Academy and co-founder of the British Army Brazilian Jiu Jitsu team. Training since 2011, Mark has competed in prestigious international competitions and brings a wealth of technical knowledge and competitive experience to every class.",
+    "image": "/static/images/mark.jpg",
     "lineage": "Mitsuyo Maeda → Carlos Gracie → Helio Gracie → Carlos Gracie Jr → Roger Gracie → Andy Roberts → Mark Badham"
   },
   {
-    "id": "chris-rowland",
-    "name": "James Thornton",
+    "id": "chris-rowlands",
+    "name": "Chris Rowlands",
     "title": "Gi Coach",
-    "belt": "Blue Belt",
-    "bio": "James has been training BJJ and submission grappling for over eight years, with a particular focus on No-Gi competition. A former amateur MMA competitor, James brings a dynamic, athletic approach to his classes and specialises in wrestling and leg lock systems.",
-    "lineage": ""
+    "belt": "Black Belt",
+    "bio": "Chris Rowlands has been training in Brazilian Jiu Jitsu since 2013 and has had the opportunity to travel and learn from world-class instructors around the globe. He brings a thoughtful, concept-driven approach to his coaching, focusing on principles that translate across all aspects of Jiu Jitsu. Chris is passionate about passing on his knowledge and is a strong advocate for the physical and mental benefits of training, while remaining committed to being a lifelong student of the art.",
+    "image": "/static/images/chris.jpg",
+    "lineage": "Mitsuyo Maeda → Carlos Gracie → Helio Gracie → Carlos Gracie Jr → Roger Gracie → Andy Roberts / Dominic Debiec → Chris Rowlands"
   },
   {
     "id": "tyler-hughes",
     "name": "Tyler Hughes",
-    "title": "Head No-Gi Coach",
+    "title": "No-Gi Coach",
     "belt": "Purple Belt",
-    "bio": "Sophie leads our junior programme and has a natural ability to connect with young students. With five years of training and a background in youth coaching, Sophie creates a positive, energetic environment where children thrive — developing not just BJJ skills but confidence and character.",
-    "lineage": ""
+    "bio": "Tyler Hughes is the head No-Gi coach at The Brazilian Jiu Jitsu Academy. A purple belt who competes in both gi and no-gi, Tyler brings a dynamic, modern approach to grappling with a strong focus on technique, concepts, and ecological learning",
+    "image": "/static/images/tyler.jpg",
+    "lineage": "Mitsuyo Maeda → Carlos Gracie → Helio Gracie → Carlos Gracie Jr → Roger Gracie → Andy Roberts → Mark Badham → Tyler Hughes"
   }
 ]

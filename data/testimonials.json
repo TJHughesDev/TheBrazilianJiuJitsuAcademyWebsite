@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Martin Andrews",
+    "quote": "Started here at 49 years old. The support and mental health benefits are life-changing, making this far more than a martial arts club.",
+    "rating": 5,
+    "image": "../static/images/martin.jpg"
+  },
+  {
+    "name": "Jez Smart",
+    "quote": "Made to feel extremely welcome. Amazing and friendly atmosphere, perfect place to start or restart your BJJ journey.",
+    "rating": 5,
+    "image": "../static/images/jez.jpg"
+  },
+  {
+    "name": "Andrew Selby",
+    "quote": "After a long hiatus from Jiu Jitsu, the facility is fantastic with clear instruction. Once you start you won't stop.",
+    "rating": 5,
+    "image": "../static/images/andy.jpg"
+  },
+  {
+    "name": "Jamie Moore",
+    "quote": "No hesitation signing up as a member. Relaxed and fun atmosphere, fantastic facilities.",
+    "rating": 5,
+    "image": ""
+  },
+  {
+    "name": "Sam Benson",
+    "quote": "Outstanding academy. State of the art equipment with a relaxed atmosphere and great people.",
+    "rating": 5,
+    "image": ""
+  },
+  {
+    "name": "Aaron Allen",
+    "quote": "Amazing place with a nice relaxed atmosphere. Instructor Mark is one of the best and a real down to earth guy.",
+    "rating": 5,
+    "image": ""
+  }
+]
