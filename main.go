@@ -1,6 +1,7 @@
 package main
 
 import (
+	"crypto/tls"
 	"encoding/json"
 	"fmt"
 	"html/template"
@@ -310,7 +311,7 @@ func sendTasterEmail(req TasterRequest) {
 		return
 	}
 	if port == "" {
-		port = "587"
+		port = "465"
 	}
 
 	subject := fmt.Sprintf("Free Taster Request — %s", req.Name)
@@ -323,10 +324,45 @@ func sendTasterEmail(req TasterRequest) {
 		to, user, subject, body)
 
 	addr := net.JoinHostPort(host, port)
-	auth := smtp.PlainAuth("", user, pass, host)
 
-	if err := smtp.SendMail(addr, auth, user, []string{to}, []byte(msg)); err != nil {
-		log.Printf("[email] send failed for %s <%s>: %v", req.Name, req.Email, err)
+	tlsConf := &tls.Config{ServerName: host}
+	conn, err := tls.Dial("tcp", addr, tlsConf)
+	if err != nil {
+		log.Printf("[email] TLS dial failed for %s <%s>: %v", req.Name, req.Email, err)
+		return
+	}
+	defer conn.Close()
+
+	client, err := smtp.NewClient(conn, host)
+	if err != nil {
+		log.Printf("[email] SMTP client failed for %s <%s>: %v", req.Name, req.Email, err)
+		return
+	}
+	defer client.Quit()
+
+	if err = client.Auth(smtp.PlainAuth("", user, pass, host)); err != nil {
+		log.Printf("[email] SMTP auth failed for %s <%s>: %v", req.Name, req.Email, err)
+		return
+	}
+	if err = client.Mail(user); err != nil {
+		log.Printf("[email] SMTP MAIL FROM failed: %v", err)
+		return
+	}
+	if err = client.Rcpt(to); err != nil {
+		log.Printf("[email] SMTP RCPT TO failed: %v", err)
+		return
+	}
+	w, err := client.Data()
+	if err != nil {
+		log.Printf("[email] SMTP DATA failed: %v", err)
+		return
+	}
+	if _, err = fmt.Fprint(w, msg); err != nil {
+		log.Printf("[email] SMTP write failed: %v", err)
+		return
+	}
+	if err = w.Close(); err != nil {
+		log.Printf("[email] SMTP close failed: %v", err)
 		return
 	}
 	log.Printf("[email] sent for %s <%s>", req.Name, req.Email)
