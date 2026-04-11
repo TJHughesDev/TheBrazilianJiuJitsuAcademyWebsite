@@ -11,7 +11,6 @@ import (
 	"net/smtp"
 	"os"
 	"strings"
-	"time"
 )
 
 // ─── Data types ────────────────────────────────────────────────
@@ -37,7 +36,7 @@ type ClassSession struct {
 type TimetableSession struct {
 	Time string `json:"time"`
 	Name string `json:"name"`
-	Type string `json:"type"` // open-mat | kids | beginners | adults-gi | adults-nogi | competition
+	Type string `json:"type"`
 }
 
 type TimetableDay struct {
@@ -66,11 +65,10 @@ type APIResponse struct {
 	Error   string `json:"error,omitempty"`
 }
 
-// PageData is passed to every template execution.
 type PageData struct {
 	Title        string
 	Description  string
-	Page         string // "home" | "timetable" | "memberships"
+	Page         string
 	Timetable    []TimetableDay
 	Testimonials []Testimonial
 }
@@ -132,51 +130,38 @@ func main() {
 	if port == "" {
 		port = "8080"
 	}
-	log.Printf("BJJA server → http://localhost:%s", port)
-	if err := http.ListenAndServe(":"+port, mux); err != nil {
-		log.Fatal(err)
-	}
+
+	log.Printf("server → http://localhost:%s", port)
+	log.Fatal(http.ListenAndServe(":"+port, mux))
 }
 
+// ─── Data & templates ──────────────────────────────────────────
+
 func loadData() error {
-	raw, err := os.ReadFile("data/instructors.json")
-	if err != nil {
-		return fmt.Errorf("reading instructors.json: %w", err)
-	}
-	if err := json.Unmarshal(raw, &instructors); err != nil {
-		return fmt.Errorf("parsing instructors.json: %w", err)
-	}
-
-	raw, err = os.ReadFile("data/schedule.json")
-	if err != nil {
-		return fmt.Errorf("reading schedule.json: %w", err)
-	}
-	if err := json.Unmarshal(raw, &schedule); err != nil {
-		return fmt.Errorf("parsing schedule.json: %w", err)
+	read := func(path string, v any) error {
+		raw, err := os.ReadFile(path)
+		if err != nil {
+			return err
+		}
+		return json.Unmarshal(raw, v)
 	}
 
-	raw, err = os.ReadFile("data/timetable.json")
-	if err != nil {
-		return fmt.Errorf("reading timetable.json: %w", err)
+	if err := read("data/instructors.json", &instructors); err != nil {
+		return err
 	}
-	if err := json.Unmarshal(raw, &timetable); err != nil {
-		return fmt.Errorf("parsing timetable.json: %w", err)
+	if err := read("data/schedule.json", &schedule); err != nil {
+		return err
 	}
-
-	raw, err = os.ReadFile("data/testimonials.json")
-	if err != nil {
-		return fmt.Errorf("reading testimonials.json: %w", err)
+	if err := read("data/timetable.json", &timetable); err != nil {
+		return err
 	}
-	if err := json.Unmarshal(raw, &testimonials); err != nil {
-		return fmt.Errorf("parsing testimonials.json: %w", err)
+	if err := read("data/testimonials.json", &testimonials); err != nil {
+		return err
 	}
 
-	log.Printf("loaded %d instructors, %d schedule slots, %d timetable days, %d testimonials",
-		len(instructors), len(schedule), len(timetable), len(testimonials))
 	return nil
 }
 
-// partials are the shared template files included in every page parse.
 var partials = []string{
 	"templates/layout.html",
 	"templates/partials/section-header.html",
@@ -191,23 +176,16 @@ func parseTemplate(pages ...string) (*template.Template, error) {
 
 func loadTemplates() error {
 	var err error
-
 	indexTmpl, err = parseTemplate("templates/index.html")
 	if err != nil {
-		return fmt.Errorf("parsing index templates: %w", err)
+		return err
 	}
-
 	timetableTmpl, err = parseTemplate("templates/timetable.html")
 	if err != nil {
-		return fmt.Errorf("parsing timetable templates: %w", err)
+		return err
 	}
-
 	membershipsTmpl, err = parseTemplate("templates/memberships.html")
-	if err != nil {
-		return fmt.Errorf("parsing memberships templates: %w", err)
-	}
-
-	return nil
+	return err
 }
 
 // ─── Handlers ──────────────────────────────────────────────────
@@ -215,86 +193,61 @@ func loadTemplates() error {
 func renderHTML(w http.ResponseWriter, t *template.Template, data PageData) {
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
 	if err := t.ExecuteTemplate(w, "layout", data); err != nil {
-		log.Println("template error:", err)
-		http.Error(w, "internal error", http.StatusInternalServerError)
+		http.Error(w, "internal error", 500)
 	}
 }
 
 func handleIndex(w http.ResponseWriter, r *http.Request) {
-	if r.URL.Path != "/" {
-		http.NotFound(w, r)
-		return
-	}
 	renderHTML(w, indexTmpl, PageData{
-		Title:        "The Brazilian Jiu Jitsu Academy | Market Drayton, Shropshire",
-		Description:  "Professional Brazilian Jiu Jitsu training in Market Drayton, Shropshire. Classes for adults and children from age 6. Book your free taster session today.",
+		Title:        "The Brazilian Jiu Jitsu Academy",
+		Description:  "BJJ training",
 		Page:         "home",
 		Testimonials: testimonials,
 	})
 }
 
 func handleTimetable(w http.ResponseWriter, r *http.Request) {
-	renderHTML(w, timetableTmpl, PageData{
-		Title:        "Class Timetable | The Brazilian Jiu Jitsu Academy",
-		Description:  "Full weekly class timetable for The Brazilian Jiu Jitsu Academy, Market Drayton. Adult gi, no-gi, kids classes and open mat sessions.",
-		Page:         "timetable",
-		Timetable:    timetable,
-		Testimonials: testimonials,
-	})
+	renderHTML(w, timetableTmpl, PageData{Page: "timetable", Timetable: timetable})
 }
 
 func handleMemberships(w http.ResponseWriter, r *http.Request) {
-	renderHTML(w, membershipsTmpl, PageData{
-		Title:        "Memberships | The Brazilian Jiu Jitsu Academy",
-		Description:  "Flexible BJJ membership options for adults and children at The Brazilian Jiu Jitsu Academy, Market Drayton. Armed forces discounts available.",
-		Page:         "memberships",
-		Testimonials: testimonials,
-	})
+	renderHTML(w, membershipsTmpl, PageData{Page: "memberships"})
 }
 
 func handleInstructors(w http.ResponseWriter, r *http.Request) {
-	jsonResponse(w, http.StatusOK, instructors)
+	jsonResponse(w, 200, instructors)
 }
 
 func handleSchedule(w http.ResponseWriter, r *http.Request) {
-	jsonResponse(w, http.StatusOK, schedule)
+	jsonResponse(w, 200, schedule)
 }
 
 func handleTaster(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
-		jsonResponse(w, http.StatusMethodNotAllowed, APIResponse{Error: "method not allowed"})
+		jsonResponse(w, 405, APIResponse{Error: "method not allowed"})
 		return
 	}
 
 	var req TasterRequest
 	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
-		jsonResponse(w, http.StatusBadRequest, APIResponse{Error: "invalid request body"})
+		jsonResponse(w, 400, APIResponse{Error: "invalid body"})
 		return
 	}
 
-	req.Name = strings.TrimSpace(req.Name)
-	req.Email = strings.TrimSpace(req.Email)
-
 	if req.Name == "" || req.Email == "" {
-		jsonResponse(w, http.StatusBadRequest, APIResponse{Error: "name and email are required"})
+		jsonResponse(w, 400, APIResponse{Error: "name and email required"})
 		return
 	}
 
 	go sendTasterEmail(req)
 
-	jsonResponse(w, http.StatusOK, APIResponse{
+	jsonResponse(w, 200, APIResponse{
 		Status:  "success",
-		Message: "Thank you! We'll be in touch shortly to confirm your session.",
+		Message: "Thanks! We'll be in touch shortly.",
 	})
 }
 
-// ─── Helpers ───────────────────────────────────────────────────
-
-func jsonResponse(w http.ResponseWriter, status int, v any) {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(status)
-	json.NewEncoder(w).Encode(v)
-}
+// ─── Email (FIXED) ─────────────────────────────────────────────
 
 func sendTasterEmail(req TasterRequest) {
 	host := os.Getenv("SMTP_HOST")
@@ -303,67 +256,98 @@ func sendTasterEmail(req TasterRequest) {
 	pass := os.Getenv("SMTP_PASS")
 	to := os.Getenv("TO_EMAIL")
 
-	if to == "" {
-		to = "info@thebrazilianjiujitsuacademy.com"
-	}
-	if host == "" {
-		log.Printf("[email] SMTP_HOST not set — skipping for %s <%s>", req.Name, req.Email)
+	if host == "" || user == "" || pass == "" {
+		log.Println("[email] missing SMTP config")
 		return
 	}
 	if port == "" {
 		port = "465"
 	}
+	if to == "" {
+		to = user
+	}
 
-	subject := fmt.Sprintf("Free Taster Request — %s", req.Name)
-	body := fmt.Sprintf("New free taster session request received %s\n\nName:     %s\nEmail:    %s\nPhone:    %s\nInterest: %s\n\nMessage:\n%s\n\n---\nSent via The Brazilian Jiu Jitsu Academy website\n",
-		time.Now().Format("02 Jan 2006 at 15:04 MST"),
-		req.Name, req.Email, req.Phone, req.Interest, req.Message)
+	subject := fmt.Sprintf("Taster Request — %s", req.Name)
+
+	body := fmt.Sprintf(
+		"Name: %s\nEmail: %s\nPhone: %s\nInterest: %s\n\nMessage:\n%s",
+		req.Name, req.Email, req.Phone, req.Interest, req.Message,
+	)
 
 	msg := fmt.Sprintf(
-		"MIME-Version: 1.0\r\nContent-Type: text/plain; charset=utf-8\r\nTo: %s\r\nFrom: %s\r\nSubject: %s\r\n\r\n%s",
-		to, user, subject, body)
+		"To: %s\r\nFrom: %s\r\nSubject: %s\r\n\r\n%s",
+		to, user, subject, body,
+	)
 
 	addr := net.JoinHostPort(host, port)
 
-	tlsConf := &tls.Config{ServerName: host}
-	conn, err := tls.Dial("tcp", addr, tlsConf)
-	if err != nil {
-		log.Printf("[email] TLS dial failed for %s <%s>: %v", req.Name, req.Email, err)
-		return
-	}
-	defer conn.Close()
+	var client *smtp.Client
+	var err error
 
-	client, err := smtp.NewClient(conn, host)
+	if port == "465" {
+		// SSL/TLS
+		conn, err := tls.Dial("tcp", addr, &tls.Config{ServerName: host})
+		if err != nil {
+			log.Println("[email] TLS dial error:", err)
+			return
+		}
+		client, err = smtp.NewClient(conn, host)
+	} else {
+		// STARTTLS
+		client, err = smtp.Dial(addr)
+		if err != nil {
+			log.Println("[email] dial error:", err)
+			return
+		}
+		if err = client.StartTLS(&tls.Config{ServerName: host}); err != nil {
+			log.Println("[email] STARTTLS error:", err)
+			return
+		}
+	}
+
 	if err != nil {
-		log.Printf("[email] SMTP client failed for %s <%s>: %v", req.Name, req.Email, err)
+		log.Println("[email] client error:", err)
 		return
 	}
 	defer client.Quit()
 
+	client.Hello("localhost")
+
 	if err = client.Auth(smtp.PlainAuth("", user, pass, host)); err != nil {
-		log.Printf("[email] SMTP auth failed for %s <%s>: %v", req.Name, req.Email, err)
+		log.Println("[email] auth error:", err)
 		return
 	}
+
 	if err = client.Mail(user); err != nil {
-		log.Printf("[email] SMTP MAIL FROM failed: %v", err)
+		log.Println("[email] MAIL FROM error:", err)
 		return
 	}
 	if err = client.Rcpt(to); err != nil {
-		log.Printf("[email] SMTP RCPT TO failed: %v", err)
+		log.Println("[email] RCPT TO error:", err)
 		return
 	}
+
 	w, err := client.Data()
 	if err != nil {
-		log.Printf("[email] SMTP DATA failed: %v", err)
+		log.Println("[email] DATA error:", err)
 		return
 	}
-	if _, err = fmt.Fprint(w, msg); err != nil {
-		log.Printf("[email] SMTP write failed: %v", err)
+
+	_, err = w.Write([]byte(msg))
+	if err != nil {
+		log.Println("[email] write error:", err)
 		return
 	}
-	if err = w.Close(); err != nil {
-		log.Printf("[email] SMTP close failed: %v", err)
-		return
-	}
-	log.Printf("[email] sent for %s <%s>", req.Name, req.Email)
+
+	w.Close()
+
+	log.Println("[email] sent successfully")
+}
+
+// ─── Helpers ───────────────────────────────────────────────────
+
+func jsonResponse(w http.ResponseWriter, status int, v any) {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(status)
+	json.NewEncoder(w).Encode(v)
 }
