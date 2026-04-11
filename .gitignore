@@ -1,0 +1,15 @@
+# Compiled binary
+tbjja
+
+# macOS
+.DS_Store
+
+# Environment / secrets
+.env
+*.env
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
