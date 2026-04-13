@@ -1,14 +1,11 @@
 package main
 
 import (
-	"crypto/tls"
 	"encoding/json"
 	"fmt"
 	"html/template"
 	"log"
-	"net"
 	"net/http"
-	"net/smtp"
 	"os"
 	"strings"
 )
@@ -250,98 +247,60 @@ func handleTaster(w http.ResponseWriter, r *http.Request) {
 // ─── Email (FIXED) ─────────────────────────────────────────────
 
 func sendTasterEmail(req TasterRequest) {
-	host := os.Getenv("SMTP_HOST")
-	port := os.Getenv("SMTP_PORT")
-	user := os.Getenv("SMTP_USER")
-	pass := os.Getenv("SMTP_PASS")
+	apiKey := os.Getenv("RESEND_API_KEY")
 	to := os.Getenv("TO_EMAIL")
 
-	if host == "" || user == "" || pass == "" {
-		log.Println("[email] missing SMTP config")
+	if apiKey == "" {
+		log.Println("[email] missing RESEND_API_KEY")
 		return
 	}
-	if port == "" {
-		port = "465"
-	}
 	if to == "" {
-		to = user
+		to = "info@thebrazilianjiujitsuacademy.com"
 	}
 
 	subject := fmt.Sprintf("Taster Request — %s", req.Name)
 
-	body := fmt.Sprintf(
-		"Name: %s\nEmail: %s\nPhone: %s\nInterest: %s\n\nMessage:\n%s",
-		req.Name, req.Email, req.Phone, req.Interest, req.Message,
-	)
+	html := fmt.Sprintf(`
+		<h2>New Taster Request</h2>
+		<p><strong>Name:</strong> %s</p>
+		<p><strong>Email:</strong> %s</p>
+		<p><strong>Phone:</strong> %s</p>
+		<p><strong>Interest:</strong> %s</p>
+		<p><strong>Message:</strong><br>%s</p>
+	`, req.Name, req.Email, req.Phone, req.Interest, req.Message)
 
-	msg := fmt.Sprintf(
-		"To: %s\r\nFrom: %s\r\nSubject: %s\r\n\r\n%s",
-		to, user, subject, body,
-	)
-
-	addr := net.JoinHostPort(host, port)
-
-	var client *smtp.Client
-	var err error
-
-	if port == "465" {
-		// SSL/TLS
-		conn, err := tls.Dial("tcp", addr, &tls.Config{ServerName: host})
-		if err != nil {
-			log.Println("[email] TLS dial error:", err)
-			return
-		}
-		client, err = smtp.NewClient(conn, host)
-	} else {
-		// STARTTLS
-		client, err = smtp.Dial(addr)
-		if err != nil {
-			log.Println("[email] dial error:", err)
-			return
-		}
-		if err = client.StartTLS(&tls.Config{ServerName: host}); err != nil {
-			log.Println("[email] STARTTLS error:", err)
-			return
-		}
+	payload := map[string]interface{}{
+		"from":    "TBJJA <info@thebrazilianjiujitsuacademy.com>", // temp sender
+		"to":      []string{to},
+		"subject": subject,
+		"html":    html,
 	}
 
+	body, _ := json.Marshal(payload)
+
+	httpReq, err := http.NewRequest("POST", "https://api.resend.com/emails", strings.NewReader(string(body)))
 	if err != nil {
-		log.Println("[email] client error:", err)
-		return
-	}
-	defer client.Quit()
-
-	client.Hello("localhost")
-
-	if err = client.Auth(smtp.PlainAuth("", user, pass, host)); err != nil {
-		log.Println("[email] auth error:", err)
+		log.Println("[email] request error:", err)
 		return
 	}
 
-	if err = client.Mail(user); err != nil {
-		log.Println("[email] MAIL FROM error:", err)
-		return
-	}
-	if err = client.Rcpt(to); err != nil {
-		log.Println("[email] RCPT TO error:", err)
-		return
-	}
+	httpReq.Header.Set("Authorization", "Bearer "+apiKey)
+	httpReq.Header.Set("Content-Type", "application/json")
 
-	w, err := client.Data()
+	client := &http.Client{}
+	resp, err := client.Do(httpReq)
 	if err != nil {
-		log.Println("[email] DATA error:", err)
+		log.Println("[email] send error:", err)
+		return
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode >= 300 {
+		log.Println("[email] failed with status:", resp.Status)
 		return
 	}
 
-	_, err = w.Write([]byte(msg))
-	if err != nil {
-		log.Println("[email] write error:", err)
-		return
-	}
-
-	w.Close()
-
-	log.Println("[email] sent successfully")
+	log.Println("[email] SENT via Resend for", req.Email)
 }
 
 // ─── Helpers ───────────────────────────────────────────────────
