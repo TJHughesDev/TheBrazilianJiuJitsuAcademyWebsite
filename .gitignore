@@ -1,6 +1,9 @@
 # Compiled binary
 tbjja
 
+# Static site output
+dist/
+
 # macOS
 .DS_Store
 

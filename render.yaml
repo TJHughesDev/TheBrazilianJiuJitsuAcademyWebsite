@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: tbjja
+    env: static
+    buildCommand: go run ./cmd/build
+    staticPublishPath: dist
+    routes:
+      - type: rewrite
+        source: /timetable
+        destination: /timetable/index.html
+      - type: rewrite
+        source: /memberships
+        destination: /memberships/index.html

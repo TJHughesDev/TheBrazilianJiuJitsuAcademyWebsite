@@ -147,7 +147,7 @@
     scheduleGrid.innerHTML = html;
   }
 
-  fetch('/api/schedule')
+  fetch('/data/schedule.json')
     .then(function (r) { return r.json(); })
     .then(renderSchedule)
     .catch(function () {
@@ -200,7 +200,7 @@
     instructorsGrid.innerHTML = html;
   }
 
-  fetch('/api/instructors')
+  fetch('/data/instructors.json')
     .then(function (r) { return r.json(); })
     .then(renderInstructors)
     .catch(function () {
@@ -270,16 +270,17 @@
     formSuccess.classList.add('hidden');
     formError.classList.add('hidden');
 
-    fetch('/api/taster', {
+    // Replace YOUR_FORM_ID with your Formspree form ID (formspree.io)
+    fetch('https://formspree.io/f/YOUR_FORM_ID', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify(data)
     })
       .then(function (r) { return r.json(); })
       .then(function (res) {
         setLoading(false);
-        if (res.status === 'success') {
-          showSuccess(res.message || null);
+        if (res.ok) {
+          showSuccess("Thanks! We'll be in touch shortly.");
           form.reset();
         } else {
           showError();
