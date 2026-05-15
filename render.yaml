@@ -2,7 +2,7 @@ services:
   - type: web
     name: tbjja
     env: static
-    staticPublishPath: .
+    staticPublishPath: public
     routes:
       - type: rewrite
         source: /timetable
