@@ -1,19 +1,19 @@
-{{define "layout"}}<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="{{.Description}}">
-  <meta property="og:title" content="{{.Title}}">
-  <meta property="og:description" content="{{.Description}}">
+  <meta name="description" content="Full weekly class timetable for The Brazilian Jiu Jitsu Academy in Market Drayton. Adult Gi, No-Gi, beginners, and kids sessions.">
+  <meta property="og:title" content="Class Timetable — The Brazilian Jiu Jitsu Academy">
+  <meta property="og:description" content="Full weekly class timetable for The Brazilian Jiu Jitsu Academy in Market Drayton.">
   <meta property="og:type" content="website">
-  <title>{{.Title}}</title>
+  <title>Class Timetable — The Brazilian Jiu Jitsu Academy</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/static/css/style.css">
 </head>
-<body class="page--{{.Page}}">
+<body class="page--timetable">
 
 <!-- ═══ NAV ═══════════════════════════════════════════════════ -->
 <nav class="nav" id="nav">
@@ -55,8 +55,51 @@
 </div>
 <div class="mobile-overlay" id="mobileOverlay"></div>
 
-<!-- ═══ PAGE CONTENT ═══════════════════════════════════════════ -->
-{{template "content" .}}
+<!-- ═══════════════════════════════════════════════════ TIMETABLE HERO -->
+<div class="tt-hero">
+  <div class="container">
+    <div class="tt-hero__content reveal">
+      <p class="label label--light">Academy Schedule</p>
+      <h1 class="tt-hero__title">Class Timetable</h1>
+      <p class="tt-hero__sub">
+        Full weekly schedule for all classes. Open mat runs weekday mornings
+        06:00–07:00 and are organised by keyholders within the academy
+        groupchat. Evening and weekend sessions listed below.
+      </p>
+      <a href="/#taster" class="btn btn--red btn--lg">Book a Free Taster</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ TIMETABLE -->
+<section class="section tt-section">
+  <div class="container">
+    <!-- Legend -->
+    <div class="tt-legend">
+      <div class="tt-legend__item"><span class="tt-dot tt-dot--adults-gi"></span>Adult Gi</div>
+      <div class="tt-legend__item"><span class="tt-dot tt-dot--adults-nogi"></span>Adult No-Gi</div>
+      <div class="tt-legend__item"><span class="tt-dot tt-dot--kids"></span>Kids</div>
+      <div class="tt-legend__item"><span class="tt-dot tt-dot--beginners"></span>Beginners</div>
+      <div class="tt-legend__item"><span class="tt-dot tt-dot--competition"></span>Competition</div>
+      <div class="tt-legend__item"><span class="tt-dot tt-dot--open-mat"></span>Open Mat</div>
+    </div>
+
+    <!-- Timetable grid — populated by main.js -->
+    <div class="tt-grid" id="ttGrid">
+      <div class="loading-state">
+        <div class="spinner"></div>
+        <p>Loading timetable…</p>
+      </div>
+    </div>
+
+    <!-- Notes -->
+    <div class="tt-notes">
+      <p><strong>Open Mat</strong> runs every weekday (Mon–Fri) 06:00–07:00 — drop in, no booking required.</p>
+      <p>Timetable is subject to change. Follow us on Instagram or Facebook for the latest updates.</p>
+      <a href="/#taster" class="btn btn--red" style="margin-top:1.5rem;display:inline-block;">Book a Free Taster Session</a>
+    </div>
+  </div>
+</section>
 
 <!-- ═══ FOOTER ═════════════════════════════════════════════════ -->
 <footer class="footer" id="contact">
@@ -123,4 +166,3 @@
 <script src="/static/js/main.js"></script>
 </body>
 </html>
-{{end}}

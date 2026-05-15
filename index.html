@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="BJJ classes for adults and children in Market Drayton, Shropshire. Professional black belt instruction for all ages and abilities. Book a free taster session today.">
+  <meta property="og:title" content="The Brazilian Jiu Jitsu Academy">
+  <meta property="og:description" content="BJJ classes for adults and children in Market Drayton, Shropshire. Professional black belt instruction for all ages and abilities. Book a free taster session today.">
+  <meta property="og:type" content="website">
+  <title>The Brazilian Jiu Jitsu Academy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body class="page--home">
+
+<!-- ═══ NAV ═══════════════════════════════════════════════════ -->
+<nav class="nav" id="nav">
+  <div class="container">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">
+        <img src="/static/images/logo.svg" alt="The Brazilian Jiu Jitsu Academy" class="nav__logo-img">
+      </a>
+      <ul class="nav__links">
+        <li><a href="/#about">About</a></li>
+        <li><a href="/#classes">Classes</a></li>
+        <li><a href="/timetable">Timetable</a></li>
+        <li><a href="/memberships">Memberships</a></li>
+        <li><a href="/#instructors">Instructors</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+      <a href="/#taster" class="btn btn--red nav__cta">Free Taster</a>
+      <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <button class="mobile-menu__close" id="menuClose" aria-label="Close menu">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <ul>
+    <li><a href="/#about" class="mobile-link">About</a></li>
+    <li><a href="/#classes" class="mobile-link">Classes</a></li>
+    <li><a href="/timetable" class="mobile-link">Timetable</a></li>
+    <li><a href="/memberships" class="mobile-link">Memberships</a></li>
+    <li><a href="/#instructors" class="mobile-link">Instructors</a></li>
+    <li><a href="/#contact" class="mobile-link">Contact</a></li>
+  </ul>
+  <a href="/#taster" class="btn btn--red mobile-link" style="margin-top:2rem;display:inline-block;">Book Free Taster</a>
+</div>
+<div class="mobile-overlay" id="mobileOverlay"></div>
+
+<!-- ═══════════════════════════════════════════════════ HERO -->
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero__content reveal">
+      <div class="hero__location">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+        </svg>
+        BJJ in Market Drayton, Shropshire
+      </div>
+      <h1 class="hero__title">
+        Start Your Journey<br>In Brazilian<br>Jiu Jitsu
+      </h1>
+      <p class="hero__sub">
+        Begin your journey in Brazilian Jiu Jitsu today by arranging a free
+        taster session. Professional instruction for all ages and abilities.
+      </p>
+      <div class="hero__actions">
+        <a href="#taster" class="btn btn--red btn--lg">Book Free Taster Session</a>
+        <a href="#classes" class="btn btn--ghost-light btn--lg">View Classes</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero__scroll">
+    <span>Scroll</span>
+    <div class="hero__scroll-line"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ WELCOME -->
+<section class="section welcome" id="about">
+  <div class="container">
+    <div class="welcome__inner reveal">
+      <p class="label text-center">Welcome</p>
+      <h2 class="section-title section-title--dark text-center">Welcome to the Academy</h2>
+      <p class="welcome__text">
+        The Brazilian Jiu Jitsu Academy is a professional BJJ gym based in
+        Market Drayton, Shropshire. We offer classes for adults and children
+        from age 6, taught by experienced black belt instructors in a friendly,
+        welcoming environment. Whether you're completely new to martial arts or
+        returning to the mat after time away — you'll find a home here
+      </p>
+      <div class="welcome__ctas">
+        <a href="#classes" class="btn btn--black">Explore Classes</a>
+        <a href="#taster" class="btn btn--ghost-dark">Book a Free Taster</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ ABOUT -->
+<section class="section about">
+  <div class="container">
+    <div class="about__grid">
+      <div class="about__content reveal">
+        <p class="label">What Is BJJ?</p>
+        <h2 class="section-title section-title--dark">Brazilian<br>Jiu Jitsu</h2>
+        <p class="about__text">
+          Brazilian Jiu Jitsu is a grappling-based martial art that focuses on
+          ground fighting and submission holds. Rooted in technique over
+          strength, BJJ is one of the most effective self-defence systems in the
+          world — and one of the most rewarding sports you can practice.
+        </p>
+        <p class="about__text">
+          At the TBJJA in Market Drayton, we welcome everyone — whether you want
+          to get fit, learn to defend yourself, compete at a high level, or
+          simply try something new. With classes for adults and children from
+          age 6, there's a place for everyone on the mat.
+        </p>
+        <a href="#taster" class="btn btn--red">Book Your Free Session</a>
+      </div>
+      <div class="about__features reveal">
+        <div class="feature-card">
+          <div class="feature-card__icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="feature-card__title">Expert Instruction</h3>
+            <p class="feature-card__text">Learn from experienced, certified black belt instructors in a structured, supportive environment.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="feature-card__title">Build Confidence</h3>
+            <p class="feature-card__text">Develop real self-defence skills while building mental resilience, discipline, and genuine confidence.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="feature-card__title">Improve Fitness</h3>
+            <p class="feature-card__text">Improve strength, flexibility, and overall fitness through dynamic, engaging training sessions.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="feature-card__title">Welcoming Community</h3>
+            <p class="feature-card__text">Join a friendly, inclusive community where everyone is welcome, regardless of experience or fitness level.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ ACADEMY IMAGE STRIP -->
+<div class="img-strip">
+  <img src="/static/images/academy.jpeg" alt="The Brazilian Jiu Jitsu Academy — training facility" loading="lazy">
+  <div class="img-strip__overlay">
+    <span class="img-strip__caption">Our facility — Market Drayton</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ CLASSES -->
+<section class="section classes" id="classes">
+  <div class="container">
+    <p class="label text-center">What We Offer</p>
+    <h2 class="section-title section-title--dark text-center">Our Classes</h2>
+    <p class="section-sub text-center">A range of BJJ classes for adults and children, catering to all skill levels — from complete beginners to seasoned competitors.</p>
+
+    <!-- Adults -->
+    <div class="classes__group reveal">
+      <div class="classes__group-header">
+        <span class="group-badge group-badge--adults">Adults</span>
+        <div>
+          <h3 class="classes__group-title">Adult Classes</h3>
+          <p class="classes__group-sub">Dynamic training for all skill levels. Whether you're a complete beginner or an experienced practitioner, our adult classes have a place for you.</p>
+        </div>
+      </div>
+      <div class="class-grid class-grid--three">
+        <div class="class-card">
+          <div class="class-tag class-tag--gi">Gi</div>
+          <h4 class="class-card__title">Gi Classes</h4>
+          <p class="class-card__text">Traditional BJJ with the kimono. Master the technical, chess-like game of grips, sweeps, and submissions. The gi slows the pace and rewards precise technique over brute strength.</p>
+          <ul class="class-card__list">
+            <li>All skill levels welcome</li>
+            <li>Gi available to borrow</li>
+            <li>Focus on technique &amp; control</li>
+          </ul>
+        </div>
+        <div class="class-card">
+          <div class="class-tag class-tag--nogi">No-Gi</div>
+          <h4 class="class-card__title">No-Gi Classes</h4>
+          <p class="class-card__text">Fast-paced grappling without the gi. No-Gi BJJ focuses on speed, clinch work, and athleticism — popular with MMA practitioners and those who prefer a more dynamic style.</p>
+          <ul class="class-card__list">
+            <li>Rash guard &amp; shorts</li>
+            <li>Dynamic and athletic</li>
+            <li>Great MMA crossover</li>
+          </ul>
+        </div>
+        <div class="class-card class-card--highlight">
+          <div class="class-tag class-tag--beginners">Beginners</div>
+          <h4 class="class-card__title">Beginners Classes</h4>
+          <p class="class-card__text">Never trained before? Our beginners classes are the perfect starting point. Step-by-step instruction in a supportive environment — no experience or fitness required whatsoever.</p>
+          <ul class="class-card__list">
+            <li>Zero experience needed</li>
+            <li>Structured curriculum</li>
+            <li>Small, supportive classes</li>
+          </ul>
+          <a href="#taster" class="class-card__link">Start here &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Kids -->
+    <div class="classes__group reveal">
+      <div class="classes__group-header">
+        <span class="group-badge group-badge--kids">Kids</span>
+        <div>
+          <h3 class="classes__group-title">Kids Classes</h3>
+          <p class="classes__group-sub">Fundamental techniques taught through games, drills, and structured training. Kids BJJ builds fitness, coordination, discipline, and confidence in a safe environment.</p>
+        </div>
+      </div>
+      <div class="class-grid class-grid--two">
+        <div class="class-card">
+          <div class="class-tag class-tag--kids">Ages 6–9</div>
+          <h4 class="class-card__title">Ages 6–9</h4>
+          <p class="class-card__text">Fun, engaging BJJ fundamentals designed for younger children. Classes use age-appropriate games and drills to build basic movements, balance, coordination, and confidence on the mat.</p>
+          <ul class="class-card__list">
+            <li>Game-based learning</li>
+            <li>Build coordination &amp; balance</li>
+            <li>Develop discipline &amp; respect</li>
+            <li>Small class sizes</li>
+          </ul>
+        </div>
+        <div class="class-card">
+          <div class="class-tag class-tag--kids">Ages 10–14</div>
+          <h4 class="class-card__title">Ages 10–14</h4>
+          <p class="class-card__text">More structured BJJ training with greater technical depth. Older kids develop real technique, participate in controlled sparring, and can pursue their belt progression.</p>
+          <ul class="class-card__list">
+            <li>Technical progression</li>
+            <li>Controlled sparring</li>
+            <li>Competition pathways</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ OFFER -->
+<section class="section offer" id="beginners-course">
+  <div class="container">
+    <div class="offer__inner reveal">
+      <div>
+        <p class="label">Special Offer</p>
+        <h2 class="section-title section-title--light">4 Week Beginners<br>Course</h2>
+        <div class="offer__gi-badge">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M2 5l6 3 4-2 4 2 6-3v3l-4 2v10a1 1 0 0 1-1 1h-4v-6l-1-1-1 1v6H7a1 1 0 0 1-1-1V10L2 8V5zm5 9h10v2H7v-2z"/>
+          </svg>
+          Free Gi Included (worth £60+)
+        </div>
+        <p class="offer__text">
+          New to BJJ? Our structured 4 Week Beginners Course is the ideal starting point. Every participant receives a free gi to keep — so you arrive with nothing and leave with everything you need to continue training.
+        </p>
+        <ul class="offer__list">
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>4 structured weekly sessions</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Free gi uniform to keep (worth £60+)</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Black belt instruction throughout</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>No experience required whatsoever</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Small class sizes — personalised attention</li>
+        </ul>
+        <a href="#taster" class="btn btn--red btn--lg">Enquire Now</a>
+      </div>
+      <div class="offer__stats">
+        <div class="offer__stat">
+          <div class="offer__stat-num">4</div>
+          <div class="offer__stat-lbl">Weeks of training</div>
+        </div>
+        <div class="offer__stat offer__stat--red">
+          <div class="offer__stat-num">FREE</div>
+          <div class="offer__stat-lbl">Gi uniform included</div>
+        </div>
+        <div class="offer__stat">
+          <div class="offer__stat-num">0</div>
+          <div class="offer__stat-lbl">Experience needed</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ SCHEDULE PREVIEW -->
+<section class="section schedule" id="schedule">
+  <div class="container">
+    <p class="label text-center">When We Train</p>
+    <h2 class="section-title section-title--dark text-center">This Week's Classes</h2>
+    <p class="section-sub text-center">A selection of our weekly sessions. Contact us if you need help choosing the right class to start.</p>
+    <div class="schedule__grid" id="scheduleGrid">
+      <div class="loading-state">
+        <div class="spinner"></div>
+        <p>Loading schedule…</p>
+      </div>
+    </div>
+    <div class="schedule__cta">
+      <a href="/timetable" class="btn btn--ghost-dark">View Full Timetable &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ SPLIT IMAGE -->
+<div class="img-feature">
+  <div class="img-feature__img-wrap">
+    <img src="/static/images/markcompeting.jpeg" alt="Head coach Mark Badham competing" loading="lazy">
+  </div>
+  <div class="img-feature__content">
+    <p class="label">Competitive Excellence</p>
+    <h2 class="section-title section-title--light">Train Under a<br>Black Belt</h2>
+    <p class="img-feature__text">
+      Our Head Coach Mark Badham has competed in some of the most prestigious competitions in the sport, such as the IBJJF World Masters. That competitive experience translates directly into every class giving you the technical depth you won't find just anywhere.
+    </p>
+    <a href="#instructors" class="btn btn--white">Meet Our Instructors</a>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ INSTRUCTORS -->
+<section class="section instructors" id="instructors">
+  <div class="container">
+    <p class="label text-center">Meet the Team</p>
+    <h2 class="section-title section-title--dark text-center">Our Instructors</h2>
+    <p class="section-sub text-center">Train with experienced, passionate coaches dedicated to your development on and off the mat.</p>
+    <div class="instructors__grid" id="instructorsGrid">
+      <div class="loading-state">
+        <div class="spinner"></div>
+        <p>Loading instructors…</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ TESTIMONIALS -->
+<section class="section testimonials" id="testimonials">
+  <div class="container">
+    <p class="label label--light text-center">Real Members</p>
+    <h2 class="section-title section-title--light text-center">What People Say</h2>
+    <p class="section-sub section-sub--light text-center">Hear from the members who train with us every week.</p>
+  </div>
+  <div class="carousel">
+    <div class="carousel__track" id="carouselTrack"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ FAQ -->
+<section class="section faq">
+  <div class="container faq__container">
+    <div class="faq__header reveal">
+      <p class="label">FAQs</p>
+      <h2 class="section-title section-title--dark">Common<br>Questions</h2>
+    </div>
+    <div class="faq__list reveal">
+      <div class="faq__item">
+        <button class="faq__q" aria-expanded="false">
+          What will I need to bring?
+          <svg class="faq__chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq__a">
+          <p>A water bottle is recommended. A mouth guard is useful for sparring classes but not essential for beginners. If you don't yet have a gi, we have gis and belts available to borrow when you first start — so there's no need to buy anything before you try it.</p>
+        </div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__q" aria-expanded="false">
+          Can I train at other gyms as well?
+          <svg class="faq__chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq__a">
+          <p>Absolutely. Training at multiple facilities is completely acceptable and encouraged. We have a relaxed, laid-back atmosphere without formal hierarchy requirements — your development is what matters.</p>
+        </div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__q" aria-expanded="false">
+          Are there age requirements?
+          <svg class="faq__chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq__a">
+          <p>The minimum age for our kids classes is 6 years old. BJJ welcomes practitioners of all ages — we have members from 6 to well over 50. It's a sport for life.</p>
+        </div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__q" aria-expanded="false">
+          Do I need prior experience or high fitness?
+          <svg class="faq__chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq__a">
+          <p>No prior martial arts or fitness experience is required whatsoever. BJJ is built on technique and leverage over strength — it's one of the most accessible martial arts for beginners of any background or fitness level.</p>
+        </div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__q" aria-expanded="false">
+          What's the difference between Gi and No-Gi?
+          <svg class="faq__chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq__a">
+          <p>Gi classes use a traditional kimono, allowing grip-based techniques and a slower, more technical game. No-Gi classes use shorts and a rash guard — the pace is faster and relies more on body locks and speed. Both are great, and many members train both.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ TASTER FORM -->
+<section class="section taster" id="taster">
+  <div class="container">
+    <div class="taster__card reveal">
+      <div class="taster__info">
+        <p class="label">Get Started Today</p>
+        <h2 class="taster__title">Book Your Free<br>Taster Session</h2>
+        <p class="taster__text">Experience your first BJJ class completely free, with no commitment. Come and see what The Brazilian Jiu Jitsu Academy is all about.</p>
+        <ul class="taster__list">
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Free first session — no cost whatsoever</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>No experience required</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Gi and belt provided to borrow</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Friendly, welcoming environment</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>No obligation to join afterwards</li>
+        </ul>
+        <div class="taster__also">
+          <strong>Also available:</strong> 4 Week Beginners Course with a <span class="text-red">free gi included</span>. Ask us about it when you get in touch.
+        </div>
+      </div>
+      <div class="taster__form-wrap">
+        <form class="taster__form" id="tasterForm" novalidate>
+          <h3 class="taster__form-title">Book Your Free Session</h3>
+          <div class="form-group">
+            <label for="fname">Full Name <span class="required">*</span></label>
+            <input type="text" id="fname" name="name" placeholder="Your name" required autocomplete="name">
+          </div>
+          <div class="form-group">
+            <label for="femail">Email Address <span class="required">*</span></label>
+            <input type="email" id="femail" name="email" placeholder="your@email.com" required autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label for="fphone">Phone Number</label>
+            <input type="tel" id="fphone" name="phone" placeholder="07XXX XXXXXX" autocomplete="tel">
+          </div>
+          <div class="form-group">
+            <label for="finterest">I'm interested in</label>
+            <select id="finterest" name="interest">
+              <option value="">Select a class type…</option>
+              <option value="Adult Beginners">Adult Beginners Class</option>
+              <option value="Adult Gi BJJ">Adult Gi BJJ</option>
+              <option value="Adult No-Gi BJJ">Adult No-Gi BJJ</option>
+              <option value="Kids Ages 6-9">Kids Class (Ages 6–9)</option>
+              <option value="Kids Ages 10-14">Kids Class (Ages 10–14)</option>
+              <option value="4 Week Beginners Course">4 Week Beginners Course (Free Gi)</option>
+              <option value="Not sure">Not sure yet</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="fmessage">Anything else? <span class="optional">(optional)</span></label>
+            <textarea id="fmessage" name="message" rows="3" placeholder="Any questions or additional info…"></textarea>
+          </div>
+          <button type="submit" class="btn btn--red btn--full" id="submitBtn">
+            <span class="btn-label">Book Free Taster Session</span>
+            <span class="btn-spinner" aria-hidden="true"></span>
+          </button>
+          <div class="form-success hidden" id="formSuccess">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>Request received!</strong>
+              <p>We'll be in touch shortly to confirm your session.</p>
+            </div>
+          </div>
+          <div class="form-error hidden" id="formError">
+            Something went wrong. Please email us at <a href="mailto:info@thebrazilianjiujitsuacademy.com">info@thebrazilianjiujitsuacademy.com</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═════════════════════════════════════════════════ -->
+<footer class="footer" id="contact">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a href="/" class="footer__logo-link">
+          <img src="/static/images/logo.svg" alt="The Brazilian Jiu Jitsu Academy" class="footer__logo-img">
+        </a>
+        <p class="footer__tagline">Market Drayton, Shropshire</p>
+        <div class="footer__social">
+          <a href="https://www.facebook.com/thebjjacademy" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/thebjjacademy_est2022" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer__col">
+        <h4 class="footer__heading">Navigate</h4>
+        <ul class="footer__links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/#about">About</a></li>
+          <li><a href="/#classes">Classes</a></li>
+          <li><a href="/timetable">Timetable</a></li>
+          <li><a href="/memberships">Memberships</a></li>
+          <li><a href="/#instructors">Instructors</a></li>
+          <li><a href="/#taster">Free Taster</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4 class="footer__heading">Classes</h4>
+        <ul class="footer__links">
+          <li><a href="/#classes">Adult Gi BJJ</a></li>
+          <li><a href="/#classes">Adult No-Gi BJJ</a></li>
+          <li><a href="/#classes">Beginners Classes</a></li>
+          <li><a href="/#classes">Kids (Ages 6–9)</a></li>
+          <li><a href="/#classes">Kids (Ages 10–14)</a></li>
+          <li><a href="/#beginners-course">4 Week Beginners Course</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4 class="footer__heading">Contact Us</h4>
+        <address class="footer__address">
+          <p>Unit 43, Tern Valley Business Park</p>
+          <p>Market Drayton, TF9 3AG</p>
+        </address>
+        <a href="mailto:info@thebrazilianjiujitsuacademy.com" class="footer__email">info@thebrazilianjiujitsuacademy.com</a>
+        <a href="/#taster" class="btn btn--red" style="margin-top:1.5rem;display:inline-block;">Book Free Taster</a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>&copy; 2024 The Brazilian Jiu Jitsu Academy. All rights reserved.</p>
+      <div class="footer__bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">REORG Charity</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/static/js/main.js"></script>
+</body>
+</html>

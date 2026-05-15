@@ -2,8 +2,7 @@ services:
   - type: web
     name: tbjja
     env: static
-    buildCommand: go run ./cmd/build
-    staticPublishPath: dist
+    staticPublishPath: .
     routes:
       - type: rewrite
         source: /timetable
